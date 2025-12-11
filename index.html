@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>L.E.T. Master | GenEd & ProfEd Reviewer</title>
+    <title>L.E.T. Master | Premium LEPT Reviewer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,23 +14,25 @@
 
     <style>
         :root {
-            /* THEME PALETTE */
-            --bg-deep: #0f172a;             
-            --bg-surface: #1e293b;         
-            --primary: #3b82f6;            /* Blue for ProfEd */
+            /* LET / EDUCATION THEME PALETTE */
+            --bg-deep: #0f172a;           
+            --bg-surface: #1e293b;        
+            --primary: #3b82f6;           /* Blue for ProfEd/Teaching */
             --primary-dim: rgba(59, 130, 246, 0.1);
             --primary-glow: rgba(59, 130, 246, 0.4);
-            --secondary: #94a3b8;         
-            --accent: #ef4444;             /* Red for GenEd */
-            --success: #10b981;            /* Green for Mix/Success */
-            --warning: #f59e0b;            
-            --danger: #dc2626;             
-            
+            --secondary: #94a3b8;        
+            --accent: #ef4444;            /* Red for GenEd */
+            --success: #10b981;           
+            --warning: #f59e0b;
+            --gold: #fbbf24;              /* Premium/License */
+            --danger: #dc2626;            
             --text-main: #f8fafc;
             --text-muted: #cbd5e1;
+            
             --glass-bg: rgba(30, 41, 59, 0.85);
             --glass-border: rgba(255, 255, 255, 0.1);
             --glass-highlight: rgba(255, 255, 255, 0.15);
+            
             --font-main: "Inter", sans-serif;
             --font-mono: "JetBrains Mono", monospace;
             --radius-md: 16px;
@@ -74,9 +76,6 @@
 
         /* UTILS */
         .hidden { display: none !important; }
-        .hidden-xs { display: block; }
-        @media(max-width: 600px) { .hidden-xs { display: none; } }
-        
         .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         .fade-out { animation: fadeOut 0.8s forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -98,7 +97,7 @@
         .btn { 
             padding: 12px 24px; border-radius: 12px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; 
             transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem;
-            position: relative; overflow: hidden; user-select: none; text-decoration: none;
+            position: relative; overflow: hidden; user-select: none;
         }
         .btn:active { transform: scale(0.96); }
         .btn-primary { 
@@ -108,6 +107,15 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
         .btn-primary:hover { filter: brightness(1.1); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5); }
+        
+        .btn-premium {
+            background: linear-gradient(135deg, var(--gold), #d97706);
+            color: #000;
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-premium:hover { filter: brightness(1.1); box-shadow: 0 6px 20px rgba(251, 191, 36, 0.5); }
+
         .btn-outline { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: var(--text-muted); }
         .btn-outline:hover { border-color: var(--primary); color: var(--text-main); background: var(--primary-dim); }
         .btn-ghost { background: transparent; color: var(--text-muted); }
@@ -126,13 +134,35 @@
             display: flex; height: 100vh; width: 100%; justify-content: center; align-items: center; 
             z-index: 100; position: fixed; inset: 0; padding: 20px;
         }
-        .auth-card { width: 100%; max-width: 400px; padding: 40px 30px; max-height: 90vh; overflow-y: auto;}
+        .auth-card { width: 100%; max-width: 420px; padding: 40px 30px; max-height: 90vh; overflow-y: auto;}
+        
         .brand-logo { 
-            width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary), #1d4ed8); 
-            border-radius: 20px; display: flex; align-items: center; justify-content: center; 
-            font-size: 2.5rem; color: white; margin: 0 auto 20px; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary), #1d4ed8); 
+            border-radius: 18px; display: flex; align-items: center; justify-content: center; 
+            font-size: 2.2rem; color: white; margin: 0 auto 15px; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
             transform: rotate(-5deg);
         }
+        
+        .sub-header {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(217, 119, 6, 0.05));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sub-price { font-size: 1.8rem; font-weight: 800; color: var(--gold); text-shadow: 0 2px 10px rgba(251, 191, 36, 0.2); }
+        .sub-tag { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        
+        .step-badge {
+            display: inline-block; padding: 4px 8px; border-radius: 6px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .step-1 { background: rgba(59, 130, 246, 0.2); color: var(--primary); border: 1px solid rgba(59, 130, 246, 0.3); }
+        .step-2 { background: rgba(251, 191, 36, 0.2); color: var(--gold); border: 1px solid rgba(251, 191, 36, 0.3); }
+
         .modal-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 300;
             display: flex; justify-content: center; align-items: center; padding: 20px;
@@ -142,11 +172,29 @@
             box-shadow: 0 0 50px rgba(244, 63, 94, 0.2); padding: 30px;
         }
 
-        /* INTRO OVERLAY */
+        /* --- FIXED INTRO OVERLAY --- */
         #view-intro {
-            position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 9999; 
-            background: var(--bg-deep); display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; text-align: center; padding: 20px;
+            position: fixed; 
+            inset: 0; 
+            width: 100vw; 
+            height: 100vh; 
+            z-index: 9999; 
+            background: var(--bg-deep);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* TRIAL TIMER STYLE */
+        .trial-banner {
+            position: fixed; top: 0; left: 0; width: 100%; 
+            background: var(--danger); color: white; 
+            text-align: center; padding: 8px; font-weight: 700; z-index: 200;
+            font-family: var(--font-mono); font-size: 0.8rem;
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
         }
 
         /* LAYOUT */
@@ -176,7 +224,11 @@
         .header { 
             height: 70px; border-bottom: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; 
             padding: 0 20px; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px); z-index: 40;
+            margin-top: 0;
         }
+        body.trial-active .header { margin-top: 35px; } 
+        body.trial-active .sidebar { padding-top: 35px; }
+
         .scroll-area { flex: 1; overflow-y: auto; padding: 20px; scroll-behavior: smooth; }
         .menu-toggle { display: none; font-size: 1.8rem; color: white; background: none; border: none; cursor: pointer; }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); z-index: 45; opacity: 0; pointer-events: none; transition: 0.3s; }
@@ -201,7 +253,7 @@
             grid-column: 1 / -1; background: linear-gradient(180deg, rgba(59, 130, 246, 0.05), rgba(15, 23, 42, 0.6));
             display: flex; align-items: center; justify-content: space-between; padding: 30px;
         }
-        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
         .cat-card {
             background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; padding: 15px;
             text-align: center; transition: 0.3s; cursor: default;
@@ -239,6 +291,8 @@
         .choice-correct .choice-key { background: var(--success); }
         .choice-wrong { background: rgba(239, 68, 68, 0.1) !important; border-color: var(--danger) !important; color: white !important; }
         .choice-wrong .choice-key { background: var(--danger); }
+        .choice-selected-neutral { background: rgba(59, 130, 246, 0.2) !important; border-color: #3b82f6 !important; color: white !important; }
+        .choice-selected-neutral .choice-key { background: #3b82f6; }
         
         .rationale-panel { margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 12px; }
         .rationale-header { font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
@@ -266,64 +320,133 @@
         <div class="orb orb-2"></div>
     </div>
 
+    <div id="view-popout" class="modal-overlay hidden fade-in" style="z-index: 2000;">
+        <div class="card modal-box" style="border-top: 4px solid var(--warning); max-width: 450px;">
+            <div style="text-align: right;">
+                <button onclick="closePopout()" class="btn btn-ghost" style="padding: 5px; font-size: 1.2rem;">&times;</button>
+            </div>
+            
+            <div style="margin-top: -20px; margin-bottom: 20px;">
+                <div style="width: 60px; height: 60px; background: rgba(245, 158, 11, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                    <i class='bx bxs-bulb' style="font-size: 2rem; color: var(--warning);"></i>
+                </div>
+                <h3 style="color: var(--warning); font-family: var(--font-mono); letter-spacing: 1px;">DID YOU KNOW?</h3>
+            </div>
+
+            <div id="popout-content" style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: left; margin-bottom: 20px;">
+                <h4 id="fact-title" style="color: white; margin-bottom: 8px;">Title Here</h4>
+                <p id="fact-body" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Body here...</p>
+            </div>
+
+            <button onclick="closePopout()" class="btn btn-primary" style="width: 100%; background: var(--warning); border-color: var(--warning);">Got it! <i class='bx bx-check'></i></button>
+        </div>
+    </div>
+
+    <div id="trial-banner" class="trial-banner hidden">
+        FREE TRIAL MODE: <span id="trial-timer-val">60</span>s REMAINING
+    </div>
+
+    <div id="trial-checking" class="modal-overlay hidden fade-in">
+        <div style="text-align: center;">
+            <div class="loader"></div>
+            <p style="margin-top: 15px; font-weight: 700; color: white;">INITIALIZING...</p>
+        </div>
+    </div>
+
     <div id="view-auth" class="auth-wrapper fade-in">
+        
         <div id="form-login" class="card auth-card">
             <div class="brand-logo"><i class='bx bxs-graduation'></i></div>
             <h2 style="text-align: center; margin-bottom: 5px;">L.E.T. MASTER</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 0.9rem;">GenEd & ProfEd Reviewer</p>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 0.9rem;">Reviewer Portal</p>
             
             <div class="input-group"><input type="email" id="inp-email" class="input" placeholder="Enter Email"></div>
             <div class="input-group"><input type="password" id="inp-pass" class="input" placeholder="Enter Password"></div>
             
             <button id="btn-login" class="btn btn-primary" style="width: 100%; margin-top: 10px;">SECURE LOGIN <i class='bx bx-log-in-circle'></i></button>
+            
+            <button onclick="startTrialSession()" class="btn btn-outline" style="width: 100%; margin-top: 10px; border-color: var(--warning); color: var(--warning);">
+                TRY FREE FOR 1 MINUTE <i class='bx bx-timer'></i>
+            </button>
+
             <div style="text-align: center; margin-top: 20px;">
-                <span class="btn-ghost" onclick="toggleAuthMode()" style="font-size: 0.8rem; cursor: pointer;">Create an Account</span>
+                <span class="btn-ghost" onclick="toggleAuthMode()" style="font-size: 0.8rem; cursor: pointer;">Get Premium Access (₱149)</span>
             </div>
             <div id="login-msg" style="text-align:center; margin-top:15px; color:var(--danger); font-size:0.8rem;"></div>
         </div>
 
         <div id="form-register" class="card auth-card hidden">
-            <h2 style="text-align: center; margin-bottom: 5px; color: var(--success);">REGISTER</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Step 1: Choose Payment Method</p>
             
-            <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 8px; border: 1px dashed var(--success); margin-bottom: 10px;">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--success); font-weight: bold;">GCash</span>
-                    <span style="font-weight: bold; color: white;">₱ 149.00</span>
+            <div class="sub-header">
+                <div class="sub-tag">Premium Access</div>
+                <div class="sub-price">₱149</div>
+                <div style="font-size: 0.7rem; color: var(--text-muted);">Validity: 90 Days</div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <div class="step-badge step-1">Step 1: Payment</div>
+                <div style="background: rgba(0, 87, 255, 0.1); padding: 15px; border-radius: 8px; border: 1px dashed #3b82f6; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <div style="font-size: 0.7rem; text-transform: uppercase; color: #3b82f6; font-weight: bold;">Send via GCash</div>
+                        <div style="font-size: 1.1rem; font-family: var(--font-mono); color: white; margin: 2px 0;">0948 374 8304</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Name: A...LO</div>
+                    </div>
+                    <div style="font-size: 2rem; color: #3b82f6;"><i class='bx bxs-wallet'></i></div>
                 </div>
-                <div style="font-size: 1.2rem; font-family: var(--font-mono); color: white; margin: 5px 0;">0948 374 8304</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted);">Name: A...LO</div>
             </div>
 
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Step 2: Enter Details</p>
+            <div>
+                <div class="step-badge step-2">Step 2: Fill Up Details</div>
+                
+                <div class="input-group">
+                    <label class="input-label">Payment Reference</label>
+                    <input type="text" id="reg-ref" class="input" placeholder="GCash Ref No. (Required)" style="border-color: var(--gold);">
+                </div>
 
-            <div class="input-group">
-                <label class="input-label">Payment Details</label>
-                <input type="text" id="reg-sender-name" class="input" placeholder="Sender Name" style="margin-bottom: 10px;">
-                <input type="number" id="reg-sender-num" class="input" placeholder="Sender Number (09...)" style="margin-bottom: 10px;">
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Account Details</label>
-                <input type="text" id="reg-ref" class="input" placeholder="Reference No." style="border-color: var(--success); margin-bottom: 10px;">
-                <input type="email" id="reg-email" class="input" placeholder="Email Address" style="margin-bottom: 10px;">
-                <input type="password" id="reg-pass" class="input" placeholder="Password (Min 6 chars)">
+                <div class="input-group">
+                    <label class="input-label">Account Info</label>
+                    <input type="text" id="reg-sender-name" class="input" placeholder="Your Name" style="margin-bottom: 10px;">
+                    <input type="email" id="reg-email" class="input" placeholder="Email Address" style="margin-bottom: 10px;">
+                    <input type="password" id="reg-pass" class="input" placeholder="Password (Min 6 chars)">
+                    <input type="hidden" id="reg-sender-num" value="0000000000"> </div>
             </div>
             
-            <button id="btn-register" class="btn btn-primary" style="width: 100%; background: var(--success); color: #000;">SUBMIT REGISTRATION</button>
-            <div style="text-align: center; margin-top: 20px;">
+            <button id="btn-register" class="btn btn-premium" style="width: 100%; margin-top: 10px;">SUBMIT & VERIFY PAYMENT</button>
+            <div style="text-align: center; margin-top: 15px;">
                 <span class="btn-ghost" onclick="toggleAuthMode()" style="font-size: 0.8rem; cursor: pointer;">Back to Login</span>
             </div>
             <div id="reg-msg" style="text-align:center; margin-top:15px; color:var(--warning); font-size:0.8rem;"></div>
         </div>
     </div>
 
+    <div id="view-trial-expired" class="modal-overlay hidden fade-in">
+        <div class="card modal-box" style="border-color: var(--gold);">
+            <div style="font-size: 3rem; color: var(--gold); margin-bottom: 10px;"><i class='bx bxs-lock-alt'></i></div>
+            <h3 style="margin-bottom: 10px; color: white;">TIME IS UP!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem;">Your 1-Minute Free Trial has ended.</p>
+            <div style="background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <div style="font-weight: 800; color: var(--gold); font-size: 1.2rem;">UNLOCK PREMIUM</div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Access Full 90 Days for just ₱149</div>
+            </div>
+            <button onclick="goToPremiumRegistration()" class="btn btn-premium" style="width: 100%;">GET PREMIUM ACCESS <i class='bx bx-right-arrow-alt'></i></button>
+        </div>
+    </div>
+    
+    <div id="view-trial-used" class="modal-overlay hidden fade-in">
+        <div class="card modal-box" style="border-color: var(--danger);">
+            <div style="font-size: 3rem; color: var(--danger); margin-bottom: 10px;"><i class='bx bxs-error-circle'></i></div>
+            <h3 style="margin-bottom: 10px; color: white;">TRIAL ALREADY USED</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px; font-size: 0.9rem;">You have already used the free trial on this device.</p>
+            <button onclick="goToPremiumRegistration()" class="btn btn-outline" style="width: 100%;">Get Premium Instead</button>
+        </div>
+    </div>
+
     <div id="view-pending" class="auth-wrapper fade-in hidden">
         <div class="card auth-card" style="text-align: center; border-top: 4px solid var(--warning);">
             <div style="font-size: 4rem; color: var(--warning); margin-bottom: 15px;"><i class='bx bx-time-five'></i></div>
-            <h2 style="color: #fff; margin-bottom: 5px; font-weight: 700;">APPROVAL PENDING</h2>
-            <p style="color: var(--warning); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 25px;">STATUS: VERIFICATION IN PROGRESS</p>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Verifying payment usually takes 1-24 hours.</p>
+            <h2 style="color: #fff; margin-bottom: 5px; font-weight: 700;">PAYMENT VERIFICATION</h2>
+            <p style="color: var(--warning); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 25px;">STATUS: REVIEWING REF NO.</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">We are checking your GCash Reference Number. Access will be granted within 24 hours.</p>
             <button id="btn-force-logout" class="btn btn-outline" style="width: 100%;">Logout & Check Later</button>
         </div>
     </div>
@@ -349,9 +472,50 @@
         </div>
     </div>
 
+    <div id="view-exam-confirm" class="modal-overlay hidden fade-in">
+        <div class="card modal-box" style="max-width: 500px; padding: 40px; border: 1px solid var(--gold); background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--gold), #d97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 0 30px rgba(251, 191, 36, 0.4);">
+                <i class='bx bxs-certification' style="font-size: 3rem; color: #000;"></i>
+            </div>
+            
+            <h2 style="color: var(--gold); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">Board Exam Simulation</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;">Are you ready to test your limits?</p>
+            
+            <div style="text-align: left; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px;">
+                <div style="display: flex; gap: 15px; margin-bottom: 12px;">
+                    <i class='bx bx-list-ol' style="color: var(--primary); font-size: 1.2rem; margin-top: 2px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: white;">Sequential Test</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">General Education → Professional Education</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; margin-bottom: 12px;">
+                    <i class='bx bx-brain' style="color: var(--accent); font-size: 1.2rem; margin-top: 2px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: white;">Comprehensive</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">150 Items per Subject (300 Total)</div>
+                    </div>
+                </div>
+                 <div style="display: flex; gap: 15px;">
+                    <i class='bx bx-hide' style="color: var(--danger); font-size: 1.2rem; margin-top: 2px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: white;">Hidden Results</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Scores revealed only at the very end.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; gap: 10px;">
+                <button onclick="startFinalExamConfirmed()" class="btn btn-premium" style="width: 100%; justify-content: center; font-size: 1rem;">LET'S TAKE THE EXAM <i class='bx bx-right-arrow-alt'></i></button>
+                <button onclick="closeModal('view-exam-confirm')" class="btn btn-ghost" style="width: 100%;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <div id="view-intro" class="hidden">
+        
         <div id="intro-msg" class="scale-up" style="text-align: center;">
-            <i class='bx bxs-badge-check' style="font-size: 5rem; color: var(--success); margin-bottom: 20px; opacity:0.9;"></i>
+            <i class='bx bxs-badge-check' style="font-size: 5rem; color: var(--success); margin-bottom: 20px;"></i>
             <h1 style="font-size: 2rem; margin-bottom: 10px; color: white;">SUBSCRIPTION ACTIVATED</h1>
             <p style="font-size: 1.2rem; color: var(--primary); font-family: var(--font-mono);">PREMIUM ACCESS: 90 DAYS</p>
         </div>
@@ -373,6 +537,7 @@
              <h1 style="font-size: 3.5rem; font-weight: 800; color:white; margin-bottom: 10px; text-shadow: 0 0 30px rgba(59, 130, 246, 0.6);">LET'S PASS!</h1>
              <p style="color: var(--text-muted);">Your license awaits.</p>
         </div>
+
     </div>
 
     <div id="app-layout" class="layout hidden">
@@ -385,8 +550,16 @@
                 <div class="nav-item" onclick="navTo('topics'); toggleSidebar()"><i class='bx bxs-book-content'></i> Start Review</div>
             </div>
             
+            <div style="padding: 0 15px; margin-top: 20px; text-align: center;">
+                 <div onclick="initFinalExam()" style="cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" style="width: 60px; height: 60px; filter: drop-shadow(0 0 10px var(--gold));">
+                    <div style="color: var(--gold); font-weight: 800; font-size: 0.9rem; margin-top: 5px;">MOCK BOARD EXAM</div>
+                    <div style="color: var(--text-muted); font-size: 0.7rem;">GenEd & ProfEd • 150 Each</div>
+                 </div>
+            </div>
+
             <div class="sub-box">
-                <div style="font-size: 0.7rem; color: var(--primary); font-weight: 700; margin-bottom: 5px;">ACCESS</div>
+                <div style="font-size: 0.7rem; color: var(--primary); font-weight: 700; margin-bottom: 5px;">LPT ACCESS</div>
                 <div id="days-remaining" class="sub-days">90</div>
                 <div style="font-size: 0.8rem; color: var(--text-muted);">Days Remaining</div>
                 <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px;">Expires: <span id="expire-date-txt" style="color:white;">-</span></div>
@@ -421,8 +594,8 @@
                 <div id="view-dashboard" class="fade-in">
                     <div class="welcome-banner">
                         <div>
-                            <h2 style="margin-bottom: 5px;">Welcome, Teacher!</h2>
-                            <p style="color: var(--text-muted);">Master GenEd & ProfEd to ace the L.E.T.</p>
+                            <h2 style="margin-bottom: 5px;">Welcome, Future LPT!</h2>
+                            <p style="color: var(--text-muted);">Master General & Professional Education to ace the L.E.T.</p>
                         </div>
                         <button onclick="navTo('topics')" class="btn btn-primary">Start Review <i class='bx bx-play'></i></button>
                     </div>
@@ -451,11 +624,11 @@
                     </div>
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
-                        <h4 style="font-weight: 600; font-size: 1.1rem;">Category Breakdown</h4>
+                        <h4 style="font-weight: 600; font-size: 1.1rem;">Subject Breakdown</h4>
                         <button onclick="resetStats()" class="btn btn-ghost" style="font-size: 0.75rem; padding: 6px 12px;"><i class='bx bx-reset'></i> Reset History</button>
                     </div>
 
-                    <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+                    <div class="category-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                         
                         <div class="cat-card">
                             <div class="ring-container">
@@ -465,8 +638,8 @@
                                 </svg>
                                 <div class="ring-text" id="txt-GENED">0%</div>
                             </div>
-                            <div style="font-weight:700; color:var(--accent);">GenEd</div>
-                            <div style="font-size:0.75rem; color:var(--text-muted);">General Education</div>
+                            <div style="font-weight:700; color:var(--accent);">General Education</div>
+                            <div style="font-size:0.75rem; color:var(--text-muted);">English, Math, Filipino, Sci, SocSci</div>
                         </div>
 
                         <div class="cat-card">
@@ -477,8 +650,8 @@
                                 </svg>
                                 <div class="ring-text" id="txt-PROFED">0%</div>
                             </div>
-                            <div style="font-weight:700; color:var(--primary);">ProfEd</div>
-                            <div style="font-size:0.75rem; color:var(--text-muted);">Professional Education</div>
+                            <div style="font-weight:700; color:var(--primary);">Professional Education</div>
+                            <div style="font-size:0.75rem; color:var(--text-muted);">Child Dev, Curriculum, Principles</div>
                         </div>
 
                     </div>
@@ -486,25 +659,24 @@
 
                 <div id="view-topics" class="hidden fade-in">
                     <h2 style="margin-bottom: 20px; font-weight: 300;">Choose <span style="font-weight:800; color:var(--primary);">Review Mode</span></h2>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
                         
                         <button onclick="selectTopic('GENED')" class="card" style="padding: 30px; text-align: left; transition: 0.3s; cursor:pointer; border-left: 5px solid var(--accent);">
-                            <i class='bx bxs-brain' style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
-                            <h3 style="font-size: 1.5rem;">General Ed</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">GenEd. English, Filipino, Math, Science, and Social Sciences.</p>
+                            <i class='bx bxs-brain' style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h3>General Ed</h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">English, Filipino, Math, Science, and Social Sciences.</p>
                         </button>
                         
                         <button onclick="selectTopic('PROFED')" class="card" style="padding: 30px; text-align: left; transition: 0.3s; cursor:pointer; border-left: 5px solid var(--primary);">
-                            <i class='bx bxs-chalkboard' style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                            <h3 style="font-size: 1.5rem;">Professional Ed</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">ProfEd. Teaching Profession, Child Development, Curriculum.</p>
+                            <i class='bx bxs-chalkboard' style="font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+                            <h3>Professional Ed</h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Teaching Profession, Child Development, Curriculum.</p>
                         </button>
                         
-                        <button onclick="selectTopic('ALL')" class="card" style="padding: 30px; text-align: left; transition: 0.3s; cursor:pointer; border: 1px solid var(--success); background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(15, 23, 42, 0.8));">
-                            <i class='bx bxs-layer' style="font-size: 3rem; color: var(--success); margin-bottom: 15px;"></i>
-                            <h3 style="font-size: 1.5rem;">MIX TEST</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Comprehensive Mock Exam. Random mix of GenEd and ProfEd questions.</p>
+                        <button onclick="selectTopic('ALL')" class="card" style="padding: 30px; text-align: left; transition: 0.3s; cursor:pointer; border-left: 5px solid var(--success);">
+                            <i class='bx bxs-layer' style="font-size: 2.5rem; color: var(--success); margin-bottom: 15px;"></i>
+                            <h3>MIXED TEST</h3>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Comprehensive Mock Exam. Random mix of GenEd and ProfEd questions.</p>
                         </button>
 
                     </div>
@@ -531,11 +703,10 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
         import { getFirestore, collection, addDoc, getDoc, getDocs, doc, setDoc, updateDoc, query, where, limit, onSnapshot, orderBy, Timestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-        // CONFIG FOR LET REVIEWER
+        // FIREBASE CONFIG FOR L.E.T. REVIEWER (Using the one from your previous LET request)
         const firebaseConfig = {
           apiKey: "AIzaSyCL4C-BJKVEBikPxepTL3qGBZPZQjdtzns",
           authDomain: "letreviewer-bdce2.firebaseapp.com",
@@ -547,9 +718,8 @@
         };
 
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app); 
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        const auth = getAuth(app);        
+        const db = getFirestore(app);    
 
         // --- GLOBAL STATE ---
         let currentQuestions = [];
@@ -565,11 +735,35 @@
         let questionTimerInterval;
         let nextQuestionInterval;
         let autoRedirectInterval; 
+        
+        // GLOBAL FOR SEQUENTIAL EXAM
+        let isFinalExamMode = false;
+        let currentExamPart = 1; // 1 (GenEd) to 2 (ProfEd)
+        let examScores = { 1:0, 2:0 };
 
-        const QUESTION_TIME_LIMIT = 90; 
+        // TRIAL MODE VARS
+        let isTrialMode = false;
+        let trialInterval;
+        let trialSeconds = 60; // 1 MINUTE
+
+        const QUESTION_TIME_LIMIT = 60; 
         const NEXT_TIME_LIMIT = 5;      
 
-        // --- QUOTES FOR INTRO (TEACHER EDITION) ---
+        // --- EDUCATION MNEMONICS / FACTS ---
+        const educationFacts = [
+            { title: "📜 RA 4670", body: "<b>Magna Carta for Public School Teachers</b>. Protects the rights and privileges of public school teachers." },
+            { title: "📜 RA 7836", body: "<b>Philippine Teachers Professionalization Act of 1994</b>. Established the LET and the Board for Professional Teachers." },
+            { title: "📜 RA 10533", body: "<b>Enhanced Basic Education Act of 2013 (K-12)</b>. Added 2 years of Senior High School." },
+            { title: "🧠 Philosophy: Essentialism", body: "<b>William Bagley</b>. Focus on 3Rs (Reading, Writing, Arithmetic). Teacher-centered. Back to basics." },
+            { title: "🧠 Philosophy: Perennialism", body: "<b>Robert Hutchins</b>. Focus on Great Books and universal truths that last forever. Changeless." },
+            { title: "🧠 Philosophy: Progressivism", body: "<b>John Dewey</b>. Learning by doing. Child-centered. Change is the only constant." },
+            { title: "🧠 Philosophy: Existentialism", body: "<b>Jean Paul Sartre</b>. Focus on choice, freedom, and individual responsibility." },
+            { title: "🧠 Philosophy: Behaviorism", body: "<b>Skinner / Pavlov</b>. Stimulus-Response. Environment shapes behavior. Reinforcement." },
+            { title: "👶 Piaget's Stages", body: "1. Sensorimotor (0-2)<br>2. Pre-operational (2-7)<br>3. Concrete Operational (7-11)<br>4. Formal Operational (11+)" },
+            { title: "👶 Freud's Psychosexual", body: "Oral -> Anal -> Phallic -> Latency -> Genital" }
+        ];
+
+        // --- QUOTES ---
         const quotes = [
             "Teaching is the profession that creates all other professions.",
             "A good teacher can inspire hope, ignite the imagination, and instill a love of learning.",
@@ -588,8 +782,63 @@
         const regPass = document.getElementById('reg-pass');
         const regRef = document.getElementById('reg-ref');
         const regSenderName = document.getElementById('reg-sender-name');
-        const regSenderNum = document.getElementById('reg-sender-num');
         
+        // --- 0. TRIAL MODE LOGIC ---
+        window.startTrialSession = () => {
+             // For simplicity, just start it without IP check to avoid CORS issues in some environments, 
+             // but you can uncomment the IP check logic if you have a backend proxy.
+             // We will use LocalStorage for basic client-side limiting.
+             if(localStorage.getItem('let_trial_used')) {
+                 document.getElementById('view-trial-used').classList.remove('hidden');
+                 return;
+             }
+             
+             localStorage.setItem('let_trial_used', 'true');
+             isTrialMode = true;
+             currentUserUID = null; 
+             userStats = {};
+             userAnsweredIds = [];
+             
+             document.getElementById('user-name').innerText = "Guest Teacher";
+             document.getElementById('view-auth').classList.add('hidden');
+             document.body.classList.add('trial-active');
+             
+             showView('app-layout');
+             loadStatsUI();
+             
+             document.getElementById('trial-banner').classList.remove('hidden');
+             trialInterval = setInterval(() => {
+                 trialSeconds--;
+                 document.getElementById('trial-timer-val').innerText = trialSeconds;
+                 
+                 if(trialSeconds <= 0) {
+                     endTrialMode();
+                 }
+             }, 1000);
+        };
+
+        // If you want the IP check logic back, replace startTrialSession with checkAndStartTrial from previous code.
+
+        function endTrialMode() {
+            clearInterval(trialInterval);
+            clearInterval(questionTimerInterval);
+            clearInterval(nextQuestionInterval);
+            ['view-dashboard', 'view-topics', 'view-count', 'view-quiz', 'app-layout'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById('trial-banner').classList.add('hidden');
+            document.body.classList.remove('trial-active');
+            document.getElementById('view-trial-expired').classList.remove('hidden');
+        }
+
+        window.goToPremiumRegistration = () => {
+             document.getElementById('view-trial-expired').classList.add('hidden');
+             document.getElementById('view-trial-used').classList.add('hidden');
+             document.getElementById('view-auth').classList.remove('hidden');
+             document.getElementById('form-login').classList.add('hidden');
+             document.getElementById('form-register').classList.remove('hidden'); 
+        };
+
         // 1. LOGIN LOGIC
         document.getElementById('btn-login').addEventListener('click', async () => {
             try {
@@ -650,7 +899,8 @@
         // 2. REGISTRATION
         document.getElementById('btn-register').addEventListener('click', async () => {
             if(regPass.value.length < 6) return document.getElementById('reg-msg').innerText = "Password too short.";
-            if(!regRef.value || !regSenderName.value || !regSenderNum.value) return document.getElementById('reg-msg').innerText = "All payment fields are required.";
+            if(!regRef.value) return document.getElementById('reg-msg').innerText = "Please enter Payment Reference Number.";
+            if(!regSenderName.value || !regEmail.value) return document.getElementById('reg-msg').innerText = "All fields are required.";
             
             try {
                 const userCred = await createUserWithEmailAndPassword(auth, regEmail.value, regPass.value);
@@ -658,13 +908,12 @@
                     email: regEmail.value,
                     gcashReference: regRef.value, 
                     senderName: regSenderName.value,
-                    senderNumber: regSenderNum.value,
                     status: "pending", 
                     createdAt: new Date(),
                     subscriptionStart: null, 
                     subscriptionExpired: null,
                     stats: {},
-                    answeredIds: [],
+                    answeredIds: [], 
                     isSessionActive: false,
                     currentSessionId: null
                 });
@@ -676,6 +925,8 @@
 
         // 3. LOGOUT
         window.forceLogout = async () => {
+            if(isTrialMode) { location.reload(); return; }
+
             if(currentUserUID) {
                 try {
                     await updateDoc(doc(db, "users", currentUserUID), {
@@ -694,6 +945,8 @@
 
         // 4. AUTH OBSERVER
         onAuthStateChanged(auth, async (user) => {
+            if (isTrialMode) return; 
+
             if (user) {
                 currentUserUID = user.uid;
                 const userSnap = await getDoc(doc(db, "users", user.uid));
@@ -721,7 +974,7 @@
                         }
 
                         userStats = userData.stats || {};
-                        userAnsweredIds = userData.answeredIds || [];
+                        userAnsweredIds = userData.answeredIds || []; 
 
                         document.getElementById('user-name').innerText = user.email.split('@')[0];
                         document.getElementById('view-auth').classList.add('hidden');
@@ -746,9 +999,11 @@
                 currentUserUID = null;
                 userStats = {};
                 userAnsweredIds = [];
-                showView('view-auth');
-                document.getElementById('app-layout').classList.add('hidden');
-                document.getElementById('view-pending').classList.add('hidden');
+                if(!isTrialMode) {
+                    showView('view-auth');
+                    document.getElementById('app-layout').classList.add('hidden');
+                    document.getElementById('view-pending').classList.add('hidden');
+                }
             }
         });
 
@@ -769,7 +1024,6 @@
 
             setTimeout(() => {
                 introMsg.classList.add('hidden');
-                
                 introCount.classList.remove('hidden');
                 let count = 3;
                 const countInterval = setInterval(() => {
@@ -778,7 +1032,6 @@
                         cntVal.innerText = count;
                     } else {
                         clearInterval(countInterval);
-                        
                         introCount.classList.add('hidden');
                         introQuote.classList.remove('hidden');
 
@@ -795,6 +1048,8 @@
                                 setTimeout(() => {
                                     introView.classList.add('hidden');
                                     introView.classList.remove('fade-out'); 
+                                    // Trigger Pop-out after animation
+                                    if(!isTrialMode) setTimeout(window.triggerSmartPopout, 1000);
                                 }, 800);
                             }, 1500); 
                         }, 3000); 
@@ -804,6 +1059,7 @@
         }
 
         function checkSubscription(userData) {
+            if(isTrialMode) return;
             let startDate, expiryDate;
             if (userData.subscriptionStart && typeof userData.subscriptionStart.toDate === 'function') {
                 startDate = userData.subscriptionStart.toDate();
@@ -847,6 +1103,7 @@
             ov.classList.toggle('active');
         };
 
+        // --- NAVIGATION & AUTO POP OUT LOGIC ---
         window.navTo = (viewId) => {
             clearInterval(questionTimerInterval);
             clearInterval(nextQuestionInterval);
@@ -856,7 +1113,16 @@
             });
             document.getElementById('view-' + viewId).classList.remove('hidden');
             document.getElementById('page-title').innerText = viewId === 'dashboard' ? 'Dashboard' : 'Reviewer';
-            if(viewId === 'dashboard') loadStatsUI();
+            
+            if(viewId === 'dashboard') {
+                loadStatsUI();
+                // AUTO POP OUT TRIGGER
+                setTimeout(() => {
+                    if(!isTrialMode && currentUserUID) {
+                        window.triggerSmartPopout();
+                    }
+                }, 1000);
+            }
         };
 
         function showView(id) {
@@ -864,9 +1130,33 @@
             document.getElementById(id).classList.remove('hidden');
         }
 
-        // --- QUIZ FUNCTIONS ---
+        // --- NEW MODAL LOGIC FOR EXAM ---
+        window.initFinalExam = () => {
+             if(isTrialMode) { alert("This feature is for Premium users only."); return; }
+             toggleSidebar();
+             document.getElementById('view-exam-confirm').classList.remove('hidden');
+        }
+
+        window.closeModal = (id) => {
+             document.getElementById(id).classList.add('hidden');
+        }
+        
+        window.startFinalExamConfirmed = () => {
+             closeModal('view-exam-confirm');
+             isFinalExamMode = true;
+             currentExamPart = 1; // 1=GenEd, 2=ProfEd
+             examScores = { 1:0, 2:0 };
+             startExamPart('GENED'); // Start with GenEd
+        }
+        
+        window.startExamPart = (partCode) => {
+             selectedCategory = partCode; 
+             startQuiz(150); // 150 items per subject for LET Mock
+        }
+
         window.selectTopic = (topic) => {
             selectedCategory = topic;
+            isFinalExamMode = false; // Normal mode
             navTo('count');
         };
 
@@ -895,25 +1185,17 @@
 
                 querySnapshot.forEach((doc) => {
                     const data = doc.data();
-                    const detected = getCategory(data.category); 
+                    const detectedCat = getLETCategory(data.category); 
                     
                     let isMatch = false;
                     if (selectedCategory === 'ALL') isMatch = true;
-                    else if (detected === selectedCategory) isMatch = true;
+                    else if (detectedCat === selectedCategory) isMatch = true;
 
                     if (isMatch) {
-                        // --- SHUFFLE LOGIC INTEGRATED HERE ---
-                        let shuffledOpts = [...data.options];
-                        for (let i = shuffledOpts.length - 1; i > 0; i--) {
-                            const j = Math.floor(Math.random() * (i + 1));
-                            [shuffledOpts[i], shuffledOpts[j]] = [shuffledOpts[j], shuffledOpts[i]];
-                        }
-
                         tempQuestions.push({ 
                             id: doc.id, 
                             ...data, 
-                            options: shuffledOpts, // Use shuffled
-                            detectedCategory: detected 
+                            detectedCategory: detectedCat 
                         });
                     }
                 });
@@ -921,8 +1203,17 @@
                 let unAnswered = tempQuestions.filter(q => !userAnsweredIds.includes(q.id));
 
                 if (unAnswered.length === 0 && tempQuestions.length > 0) {
-                     alert("You've completed all unique questions here! We will review previous items now.");
-                     unAnswered = tempQuestions; 
+                     if(!isFinalExamMode) {
+                        if(confirm("You've answered ALL available questions for this category. Reset and review again?")) {
+                            unAnswered = tempQuestions; 
+                        } else {
+                            navTo('topics');
+                            document.getElementById('view-loading').classList.add('hidden');
+                            return;
+                        }
+                     } else {
+                         unAnswered = tempQuestions;
+                     }
                 } else if (unAnswered.length < limitCount && tempQuestions.length > 0) {
                      const needed = limitCount - unAnswered.length;
                      const answered = tempQuestions.filter(q => userAnsweredIds.includes(q.id));
@@ -933,10 +1224,21 @@
                 unAnswered.sort(() => Math.random() - 0.5);
                 
                 if (unAnswered.length === 0) {
-                    alert(`No questions found for ${selectedCategory}. Check if you uploaded questions for this category.`);
-                    navTo('topics');
-                    document.getElementById('view-loading').classList.add('hidden');
-                    return;
+                    // Fallback for Trial if DB is empty
+                    if(isTrialMode) {
+                        unAnswered = [
+                            {question: "Father of Modern Education?", options: ["Dewey","Comenius","Locke","Piaget"], correct: "Comenius", rationale: "Comenius introduced pictorial textbooks."},
+                            {question: "First President of PH?", options: ["Quezon","Aguinaldo","Osmena","Roxas"], correct: "Aguinaldo", rationale: "Proclaimed in 1898."},
+                            {question: "Magna Carta for Teachers?", options: ["RA 4670","RA 7836","RA 10533","RA 9155"], correct: "RA 4670", rationale: "Enacted in 1966."},
+                            {question: "Center of Solar System?", options: ["Earth","Sun","Mars","Jupiter"], correct: "Sun", rationale: "Heliocentric Theory."},
+                            {question: "Author of Noli Me Tangere?", options: ["Rizal","Bonifacio","Luna","Mabini"], correct: "Rizal", rationale: "Written in 1887."}
+                        ];
+                    } else {
+                        alert(`No questions found for ${selectedCategory}.`);
+                        navTo('topics');
+                        document.getElementById('view-loading').classList.add('hidden');
+                        return;
+                    }
                 }
 
                 currentQuestions = unAnswered.slice(0, limitCount);
@@ -947,7 +1249,7 @@
 
             } catch (error) {
                 console.error("Error loading quiz:", error);
-                alert("Error loading questions. Check connection.");
+                alert("Error loading questions. (Check internet)");
                 navTo('topics');
                 document.getElementById('view-loading').classList.add('hidden');
             }
@@ -971,10 +1273,15 @@
                 `;
             });
 
+            let headerText = `<span>Question ${currentIndex + 1} of ${currentQuestions.length}</span> <span style="color:var(--primary);">Score: ${score}</span>`;
+            
+            if(isFinalExamMode) {
+                 headerText = `<span style="color:var(--gold); font-weight:800;">FINAL EXAM: PART ${currentExamPart}/2 (${selectedCategory})</span> <span style="color:var(--text-muted);">Item ${currentIndex + 1} of ${currentQuestions.length}</span>`;
+            }
+
             container.innerHTML = `
                 <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:0.8rem; color:var(--text-muted);">
-                    <span>Question ${currentIndex + 1} of ${currentQuestions.length}</span>
-                    <span style="color:var(--primary);">Score: ${score}</span>
+                    ${headerText}
                 </div>
                 <div class="card" style="padding:25px; margin-bottom:20px;">
                     <div class="timer-bg"><div id="q-timer-fill" class="timer-fill"></div></div>
@@ -991,13 +1298,15 @@
         }
 
         function startQuestionTimer() {
-            let timeLeft = QUESTION_TIME_LIMIT;
+            let limit = isFinalExamMode ? 72 : QUESTION_TIME_LIMIT; 
+            
+            let timeLeft = limit;
             const timerFill = document.getElementById('q-timer-fill');
             timerFill.style.width = '100%';
             timerFill.className = 'timer-fill'; 
             questionTimerInterval = setInterval(() => {
                 timeLeft--;
-                const percentage = (timeLeft / QUESTION_TIME_LIMIT) * 100;
+                const percentage = (timeLeft / limit) * 100;
                 timerFill.style.width = `${percentage}%`;
                 if (timeLeft <= 10) timerFill.classList.add('warning');
                 if (timeLeft <= 5) timerFill.classList.add('danger');
@@ -1008,13 +1317,11 @@
         function handleTimeUp() { checkAnswer(null, -1); }
 
         window.checkAnswer = (btnElement, selectedIdx) => {
-            // STOP TIMER IMMEDIATELY
             clearInterval(questionTimerInterval);
             
             const q = currentQuestions[currentIndex];
             const buttons = document.querySelectorAll('.choice-btn');
             
-            // DISABLE BUTTONS
             buttons.forEach(b => b.classList.add('disabled'));
             buttons.forEach(b => b.onclick = null);
 
@@ -1023,30 +1330,45 @@
 
             if (selectedIdx >= 0 && btnElement) {
                 selectedText = btnElement.innerText.substring(2).trim(); 
-                
                 if (q.options[selectedIdx] === q.correct || selectedText.includes(q.correct) || q.correct.includes(q.options[selectedIdx])) {
                     isCorrect = true;
                 } else {
                      if(btnElement.innerText.includes(q.correct)) isCorrect = true;
                 }
+                if (isCorrect) score++;
+            }
 
+            // *** FINAL EXAM LOGIC: NO FEEDBACK ***
+            if (isFinalExamMode) {
+                if(btnElement) btnElement.classList.add('choice-selected-neutral');
+                document.getElementById('next-btn').classList.remove('hidden');
+                
+                const statsCategory = q.detectedCategory || getLETCategory(q.category);
+                updateLocalStats(statsCategory, isCorrect);
+                updateLocalStats('ALL', isCorrect);
+                if (!userAnsweredIds.includes(q.id)) {
+                    userAnsweredIds.push(q.id);
+                    saveSingleQuestionProgress(q.id);
+                }
+                startNextQuestionTimer();
+                return; 
+            }
+
+            // --- NORMAL MODE FEEDBACK ---
+            if (selectedIdx >= 0 && btnElement) {
                 if (isCorrect) {
-                    score++;
                     btnElement.classList.add('choice-correct');
                     confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 }, colors: ['#3b82f6', '#ef4444'] });
                 } else {
                     btnElement.classList.add('choice-wrong');
                 }
             }
-
-            // HIGHLIGHT CORRECT ANSWER ALWAYS
             buttons.forEach((b, idx) => {
                 if(q.options[idx] === q.correct || b.innerText.includes(q.correct)) {
                     b.classList.add('choice-correct');
                 }
             });
 
-            // SHOW RATIONALE
             const rArea = document.getElementById('rationale-area');
             rArea.classList.remove('hidden');
             rArea.innerHTML = `
@@ -1056,19 +1378,28 @@
                 </div>
             `;
             
-            // SHOW NEXT BUTTON
             document.getElementById('next-btn').classList.remove('hidden');
 
-            const statsCategory = q.detectedCategory || getCategory(q.category);
+            const statsCategory = q.detectedCategory || getLETCategory(q.category);
             updateLocalStats(statsCategory, isCorrect);
             updateLocalStats('ALL', isCorrect);
             
             if (!userAnsweredIds.includes(q.id)) {
                 userAnsweredIds.push(q.id);
+                saveSingleQuestionProgress(q.id);
             }
             
             startNextQuestionTimer();
         };
+
+        async function saveSingleQuestionProgress(qId) {
+            if(isTrialMode) return; 
+            if(currentUserUID) {
+                try {
+                    await updateDoc(doc(db, "users", currentUserUID), { answeredIds: userAnsweredIds });
+                } catch(e) { console.log("Bg save err", e); }
+            }
+        }
 
         function startNextQuestionTimer() {
             let nextTimeLeft = NEXT_TIME_LIMIT;
@@ -1088,15 +1419,88 @@
         window.nextQuestion = () => {
             clearInterval(nextQuestionInterval);
             currentIndex++;
-            if (currentIndex < currentQuestions.length) { renderQuestion(); } else { showResults(); }
+            if (currentIndex < currentQuestions.length) { 
+                renderQuestion(); 
+            } else { 
+                if(isFinalExamMode) {
+                    handleExamPartFinish();
+                } else {
+                    showResults(); 
+                }
+            }
         };
 
+        // --- EXAM FLOW MANAGER ---
+        window.handleExamPartFinish = () => {
+             examScores[currentExamPart] = score;
+             if(currentExamPart < 2) {
+                 // Move to ProfEd
+                 document.getElementById('view-quiz').innerHTML = `
+                    <div class="card fade-in" style="text-align:center; padding:40px;">
+                        <div style="font-size:3rem; color:var(--gold); margin-bottom:10px;"><i class='bx bx-coffee'></i></div>
+                        <h2 style="color: white; margin-bottom:10px;">PART ${currentExamPart} COMPLETED</h2>
+                        <p style="color:var(--text-muted); margin-bottom:30px;">Take a break. Get some water. Prepare for Professional Education.</p>
+                        <button onclick="startNextPart()" class="btn btn-primary" style="width:100%;">START PROF ED <i class='bx bx-play'></i></button>
+                    </div>
+                 `;
+             } else {
+                 showGrandResults();
+             }
+        }
+
+        window.startNextPart = () => {
+             currentExamPart++;
+             startExamPart('PROFED');
+        }
+
+        function showGrandResults() {
+             clearInterval(questionTimerInterval);
+             clearInterval(nextQuestionInterval);
+             saveAndExit(false);
+
+             let totalCorrect = examScores[1] + examScores[2];
+             let totalItems = 300; // 150 + 150
+             let percentage = Math.round((totalCorrect / totalItems) * 100);
+
+             let resultTitle = "EXAM FAILED";
+             let resultColor = "var(--danger)";
+             let resultIcon = "<i class='bx bxs-x-circle'></i>";
+             let message = "You did not reach the passing rate. Don't give up, Teacher.";
+
+             if (percentage >= 75) {
+                 resultTitle = "EXAM PASSED";
+                 resultColor = "var(--success)";
+                 resultIcon = "<i class='bx bxs-badge-check'></i>";
+                 message = "Congratulations! You are ready for the Board Exam.";
+             }
+
+             document.getElementById('view-quiz').innerHTML = `
+                <div class="card fade-in" style="text-align:center; padding:40px;">
+                    <div style="font-size:3rem; color:${resultColor}; margin-bottom:10px;">${resultIcon}</div>
+                    <h2 style="color: white; margin-bottom:5px;">${resultTitle}</h2>
+                    <div style="font-size:4rem; font-weight:800; color:${resultColor}; text-shadow: 0 0 20px ${resultColor}; margin-bottom:10px;">${percentage}%</div>
+                    <p style="color:var(--text-muted); margin-bottom:20px;">${message}</p>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding:15px; border-radius:12px; margin-bottom:25px; text-align:left; font-size:0.9rem;">
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>GenEd:</span> <span>${examScores[1]}/150</span></div>
+                        <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>ProfEd:</span> <span>${examScores[2]}/150</span></div>
+                        <div style="border-top:1px solid rgba(255,255,255,0.1); margin-top:5px; padding-top:5px; font-weight:bold; color:var(--gold);">
+                            <div style="display:flex; justify-content:space-between;"><span>TOTAL:</span> <span>${totalCorrect}/300</span></div>
+                        </div>
+                    </div>
+
+                    <button onclick="navTo('dashboard')" class="btn btn-outline" style="width:100%;">Return to Dashboard</button>
+                </div>
+            `;
+        }
+
+        // --- NORMAL RESULTS ---
         function showResults() {
             clearInterval(questionTimerInterval);
             clearInterval(nextQuestionInterval);
             saveAndExit(false); 
             const percentage = Math.round((score / currentQuestions.length) * 100);
-            let autoSeconds = 5;
+            let autoSeconds = 10; 
             document.getElementById('view-quiz').innerHTML = `
                 <div class="card fade-in" style="text-align:center; padding:40px;">
                     <div style="font-size:3rem; color:var(--primary); margin-bottom:10px;"><i class='bx bx-check-shield'></i></div>
@@ -1126,6 +1530,8 @@
         }
 
         window.saveAndExit = async (shouldNavigate = true) => {
+            if(isTrialMode) { if(shouldNavigate) navTo('dashboard'); return; }
+
             if(currentUserUID) {
                 try { 
                     await updateDoc(doc(db, "users", currentUserUID), { 
@@ -1137,7 +1543,6 @@
             }
         };
 
-        // --- UPDATED STATS UI ---
         window.loadStatsUI = () => {
             const stats = userStats; 
             const cats = ['GENED', 'PROFED', 'ALL'];
@@ -1159,13 +1564,13 @@
 
                              if(pct >= 75) {
                                  welcomeTitle.innerText = "YOU ARE READY! 🎓";
-                                 welcomeMsg.innerText = "Your mastery is high. Go get that license!";
+                                 welcomeMsg.innerText = "Your mastery is high. Go get that license, LPT!";
                              } else if (pct >= 50) {
                                  welcomeTitle.innerText = "Great Momentum! 💪";
                                  welcomeMsg.innerText = "You are halfway there. Keep grinding!";
                              } else {
                                  welcomeTitle.innerText = "Don't Give Up! 🌱";
-                                 welcomeMsg.innerText = "Every teacher was once a student. Keep studying.";
+                                 welcomeMsg.innerText = "Every expert was once a beginner. Keep studying.";
                              }
                         } else {
                             const offset = 220 - (220 * pct) / 100; 
@@ -1179,14 +1584,19 @@
                     if(ring) { ring.style.strokeDashoffset = c === 'ALL' ? 408 : 220; txt.innerText = "0%"; }
                     if(c === 'ALL') {
                         document.getElementById('ans-ALL').innerText = "0";
-                        welcomeTitle.innerText = "Welcome, Teacher!";
-                        welcomeMsg.innerText = "Master GenEd & ProfEd to ace the L.E.T.";
+                        welcomeTitle.innerText = "Welcome, Future LPT!";
+                        welcomeMsg.innerText = "Your license is just a few clicks away.";
                     }
                 }
             });
         };
 
         window.resetStats = async () => {
+            if(isTrialMode) {
+                 userStats = {};
+                 loadStatsUI();
+                 return;
+            }
             if(confirm("Reset all mastery progress AND question history? This cannot be undone.")) {
                 userStats = {};
                 userAnsweredIds = [];
@@ -1195,13 +1605,29 @@
             }
         };
 
-        function getCategory(rawCategory) {
+        // --- DID YOU KNOW / POP OUT FEATURE ---
+        window.triggerSmartPopout = () => {
+            const el = document.getElementById('view-popout');
+            if(!el.classList.contains('hidden')) return; 
+            
+            const rand = Math.floor(Math.random() * educationFacts.length);
+            const fact = educationFacts[rand];
+            
+            document.getElementById('fact-title').innerHTML = fact.title;
+            document.getElementById('fact-body').innerHTML = fact.body;
+            el.classList.remove('hidden');
+        };
+
+        window.closePopout = () => {
+            document.getElementById('view-popout').classList.add('hidden');
+        };
+
+        // Helper
+        function getLETCategory(rawCategory) {
             if (!rawCategory) return 'GENED'; 
-            const cat = rawCategory.trim().toUpperCase();
-            // Looks for "PROFED", "PROF ED", "PROFESSIONAL", etc.
-            if(cat.includes("PROF") || cat.includes("PED")) return "PROFED";
-            // Default to GenEd
-            return "GENED"; 
+            const upper = rawCategory.toUpperCase();
+            if (upper === 'PROFED' || upper === 'PROF ED' || upper.includes('CHILD') || upper.includes('CURRICULUM')) return 'PROFED';
+            return 'GENED'; 
         }
     </script>
 </body>
